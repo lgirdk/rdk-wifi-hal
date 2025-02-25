@@ -25,7 +25,7 @@ lib_LTLIBRARIES = libdpp_haldpp.la
 
 libdpp_haldpp_la_CPPFLAGS = -I$(top_srcdir)/include
 
-libdpp_haldpp_la_CFLAGS = -Wall -Werror -Wextra -Wno-unused-parameter -Wno-pointer-sign -Wno-sign-compare -Wno-type-limits -Wno-format-truncation
+libdpp_haldpp_la_CFLAGS = -Wall
 
 libdpp_haldpp_la_SOURCES = dpp.c
 

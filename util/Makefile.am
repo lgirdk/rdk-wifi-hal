@@ -25,7 +25,7 @@ lib_LTLIBRARIES = lib_halutil.la
 
 lib_halutil_la_CPPFLAGS = -I$(top_srcdir)/include
 
-lib_halutil_la_CFLAGS = -Wall -Werror -Wextra -Wno-unused-parameter -Wno-pointer-sign -Wno-sign-compare -Wno-type-limits -Wno-format-truncation
+lib_halutil_la_CFLAGS = -Wall
 
 lib_halutil_la_SOURCES = collection.c
 

@@ -17,22 +17,20 @@
 # limitations under the License.
 ##########################################################################
 
-AM_CFLAGS = -D_ANSC_LINUX
-AM_CFLAGS += -D_ANSC_USER
-AM_CFLAGS += -D_ANSC_LITTLE_ENDIAN_
-AM_CFLAGS += -Wall -Werror -Wextra -Wno-unused-parameter -Wno-pointer-sign -Wno-sign-compare -Wno-type-limits -Wno-format-truncation
-AM_CPPFLAGS = -Wall -Werror
 AUTOMAKE_OPTIONS = subdir-objects
+
 SUBDIRS = .
 if WITH_GTEST_SUPPORT
 SUBDIRS += test
 endif
+
 ACLOCAL_AMFLAGS = -I m4
-hardware_platform = i686-linux-gnu
 
 if WIFI_EMULATOR
+
 lib_LTLIBRARIES = librdk_wifiemulatorhal.la
-librdk_wifiemulatorhal_la_CPPFLAGS = -I$(top_srcdir)/./include $(CPPFLAGS) -I$(top_srcdir)/../util_crypto -I${PKG_CONFIG_SYSROOT_DIR}${includedir}/libnl3 -I${PKG_CONFIG_SYSROOT_DIR}${includedir}/rdk-wifi-libhostap/ -I${PKG_CONFIG_SYSROOT_DIR}${includedir}/rdk-wifi-libhostap/src/ -I${PKG_CONFIG_SYSROOT_DIR}${includedir}/rdk-wifi-libhostap/src/utils/ -I${PKG_CONFIG_SYSROOT_DIR}${includedir}/rdk-wifi-libhostap/src/ap/ -I${PKG_CONFIG_SYSROOT_DIR}${includedir}/rdk-wifi-libhostap/src/drivers/ -I$(top_srcdir)/../util
+
+librdk_wifiemulatorhal_la_CPPFLAGS = -I$(top_srcdir)/include -I$(top_srcdir)/../util_crypto -I${PKG_CONFIG_SYSROOT_DIR}${includedir}/libnl3 -I${PKG_CONFIG_SYSROOT_DIR}${includedir}/rdk-wifi-libhostap/ -I${PKG_CONFIG_SYSROOT_DIR}${includedir}/rdk-wifi-libhostap/src/ -I${PKG_CONFIG_SYSROOT_DIR}${includedir}/rdk-wifi-libhostap/src/utils/ -I${PKG_CONFIG_SYSROOT_DIR}${includedir}/rdk-wifi-libhostap/src/ap/ -I${PKG_CONFIG_SYSROOT_DIR}${includedir}/rdk-wifi-libhostap/src/drivers/ -I$(top_srcdir)/../util
 librdk_wifiemulatorhal_la_CFLAGS = -Wall -Werror -Wextra -Wno-unused-parameter -Wno-pointer-sign -Wno-sign-compare -Wno-type-limits -Wno-format-truncation -Wno-poison-system-directories -Wno-discarded-qualifiers
 librdk_wifiemulatorhal_la_SOURCES = wifi_hal_rx_test.c wifi_hal_data_rx.c wifi_hal_dpp.c wifi_hal_anqp.c wifi_hal_frame_test.c ../util_crypto/aes_siv.c wifi_tlv.c wifi_hal_rdk_util.c
 librdk_wifiemulatorhal_la_LDFLAGS = -lm -lcjson -lssl -lcrypto
@@ -44,8 +42,10 @@ librdk_wifiemulatorhal_la_CPPFLAGS += -I$(top_srcdir)/../platform/raspberry-pi
 librdk_wifiemulatorhal_la_SOURCES += ../platform/raspberry-pi/platform_pi.c
 
 else
+
 lib_LTLIBRARIES = librdk_wifihal.la
-librdk_wifihal_la_CPPFLAGS = -I$(top_srcdir)/./include $(CPPFLAGS) -I$(top_srcdir)/../util_crypto -I${PKG_CONFIG_SYSROOT_DIR}${includedir}/libnl3 -I${PKG_CONFIG_SYSROOT_DIR}${includedir}/rdk-wifi-libhostap/ -I${PKG_CONFIG_SYSROOT_DIR}${includedir}/rdk-wifi-libhostap/src/ -I${PKG_CONFIG_SYSROOT_DIR}${includedir}/rdk-wifi-libhostap/src/utils/ -I${PKG_CONFIG_SYSROOT_DIR}${includedir}/rdk-wifi-libhostap/src/ap/ -I${PKG_CONFIG_SYSROOT_DIR}${includedir}/rdk-wifi-libhostap/src/drivers/ -I$(top_srcdir)/../util
+
+librdk_wifihal_la_CPPFLAGS = -I$(top_srcdir)/include -I$(top_srcdir)/../util_crypto -I${PKG_CONFIG_SYSROOT_DIR}${includedir}/libnl3 -I${PKG_CONFIG_SYSROOT_DIR}${includedir}/rdk-wifi-libhostap/ -I${PKG_CONFIG_SYSROOT_DIR}${includedir}/rdk-wifi-libhostap/src/ -I${PKG_CONFIG_SYSROOT_DIR}${includedir}/rdk-wifi-libhostap/src/utils/ -I${PKG_CONFIG_SYSROOT_DIR}${includedir}/rdk-wifi-libhostap/src/ap/ -I${PKG_CONFIG_SYSROOT_DIR}${includedir}/rdk-wifi-libhostap/src/drivers/ -I$(top_srcdir)/../util
 librdk_wifihal_la_CFLAGS = -Wall -Werror -Wextra -Wno-unused-parameter -Wno-pointer-sign -Wno-sign-compare -Wno-type-limits -Wno-format-truncation -Wno-poison-system-directories -Wno-discarded-qualifiers
 librdk_wifihal_la_SOURCES = wifi_hal_rx_test.c wifi_hal_data_rx.c wifi_hal_dpp.c wifi_hal_anqp.c wifi_hal_frame_test.c ../util_crypto/aes_siv.c wifi_tlv.c wifi_hal_rdk_util.c
 librdk_wifihal_la_LDFLAGS = -lm -lcjson -lssl -lcrypto
@@ -118,6 +118,7 @@ if RASPBERRY_PI_PORT
 librdk_wifihal_la_CPPFLAGS += -I$(top_srcdir)/../platform/raspberry-pi
 librdk_wifihal_la_SOURCES += ../platform/raspberry-pi/platform_pi.c
 endif
+
 include_HEADERS = wifi_hal_rdk.h wifi_hal_rdk_framework.h ieee80211.h ../util_crypto/aes_siv.h
 
 if ONE_WIFIBUILD
@@ -125,4 +126,3 @@ include_HEADERS += wifi_hal_priv.h wifi_hal_wnm_rrm.h
 endif
 
 endif #WIFI_EMULATOR
-

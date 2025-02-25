@@ -16,5 +16,5 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 ##########################################################################
-SUBDIRS = platform src util feature_dpp
 
+SUBDIRS = platform src util feature_dpp

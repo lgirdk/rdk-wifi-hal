@@ -55,7 +55,7 @@
 #include <aes_siv.h>
 #include <wifi_hal_rdk_framework.h>
 #include <collection.h>
-#include <cJSON.h>
+#include <cjson/cJSON.h>
 
 #define printf wifi_dpp_dbg_print
 
